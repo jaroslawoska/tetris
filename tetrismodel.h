@@ -48,7 +48,7 @@ private:
     static constexpr int m_height = 22;
     static constexpr int m_size = m_width * m_height;
 
-    using StateContainer = std::array<bool, m_size>;
+    using StateContainer = std::array<QColor, m_size>;
     StateContainer m_screenState;
     StateContainer m_staticState;
     Tetromino m_tetromino;

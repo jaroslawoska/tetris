@@ -32,9 +32,10 @@ ApplicationWindow {
             implicitHeight: 15
 
             required property var model
-            required property bool value
+            required property color value
 
-            color: value ? "blue" : "grey"
+            //color: value ? "blue" : "grey"
+            color: value
         }
 
         model: TetrisModel {

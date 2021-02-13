@@ -17,8 +17,7 @@ public:
     void moveRight();
     void moveDown();
     void rotate();
-    bool getPos(bool val, int posX, int posY);
-    QColor getTetrominoColor();
+    QColor getPos(QColor val, int posX, int posY);
 
 private:
     int rotate(int px, int py);
@@ -28,46 +27,43 @@ private:
     int m_posX = 0;
     int m_posY = 0;
     int m_rotation = 0;
-    QColor m_color;
 
     static constexpr int m_width = 4;
     static constexpr int m_height = 4;
     static constexpr int m_size = m_width * m_height;
     static const int MAX_TERMINOS = 6;
 
-    using TetrominoContainer = std::array<bool, m_size>;
+    using TetrominoContainer = std::array<QColor, m_size>;
     TetrominoContainer m_container;
-    QColor m_tetrominoColors[MAX_TERMINOS] = {QColorConstants::Blue,
-                                              QColorConstants::Red,
-                                              QColorConstants::Yellow,
-                                              QColorConstants::Gray,
-                                              QColorConstants::Red,
-                                              QColorConstants::Green};
+    TetrominoContainer m_tetromino[MAX_TERMINOS] = {{QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
+                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
+                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
+                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue, QColorConstants::Blue},
 
-    TetrominoContainer m_tetromino[MAX_TERMINOS] = {{false, false, false, true,
-                                                     false, false, false, true,
-                                                     false, false, false, true,
-                                                     false, false, true, true},
-                                                    {false, false, false, false,
-                                                    false, true, true, false,
-                                                    false, true, true, false,
-                                                    false, false, false, false},
-                                                    {false, false, false, true,
-                                                    false, false, false, true,
-                                                    false, false, false, true,
-                                                    false, false, false, true},
-                                                    {false, false, false, false,
-                                                    false, false, false, false,
-                                                    false, false, false, true,
-                                                    false, false, true, true},
-                                                    {false, false, false, false,
-                                                    false, false, false, false,
-                                                    false, false, false, true,
-                                                    false, false, true, true},
-                                                    {false, false, false, false,
-                                                    false, false, false, false,
-                                                    false, false, true, false,
-                                                    false, true, true, true}};
+                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray},
+
+                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red},
+
+                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Green,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Green, QColorConstants::Green},
+
+                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Black,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Black, QColorConstants::Black},
+
+                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Cyan, QColorConstants::Gray,
+                                                    QColorConstants::Gray, QColorConstants::Cyan, QColorConstants::Cyan, QColorConstants::Cyan}};
 
 
 };

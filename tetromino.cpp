@@ -13,7 +13,6 @@ Tetromino::Tetromino(Tetromino &tetromino)
     m_posY = tetromino.m_posY;
     m_rotation = tetromino.m_rotation;
     m_container = tetromino.m_container;
-    m_color = tetromino.m_color;
 }
 
 Tetromino & Tetromino::operator=(Tetromino &tetromino)
@@ -22,15 +21,12 @@ Tetromino & Tetromino::operator=(Tetromino &tetromino)
     m_posY = tetromino.m_posY;
     m_rotation = tetromino.m_rotation;
     m_container = tetromino.m_container;
-    m_color = tetromino.m_color;
     return *this;
 }
 
 void Tetromino::genATetromino()
 {
-    int pos = QRandomGenerator::global()->bounded(0,MAX_TERMINOS);
-    m_container = m_tetromino[pos];
-    m_color = m_tetrominoColors[pos];
+    m_container = m_tetromino[QRandomGenerator::global()->bounded(0,MAX_TERMINOS)];
 }
 
 bool Tetromino::inside(int x_max, int y_max)
@@ -103,16 +99,11 @@ int Tetromino::rotate(int px, int py)
     return pi;
 }
 
-bool Tetromino::getPos(bool val, int posX, int posY)
+QColor Tetromino::getPos(QColor val, int posX, int posY)
 {
     if((posX >= m_posX) && (posY >= m_posY) && (posX < m_posX + 4) && (posY < m_posY + 4)){
         return m_container[rotate(posX-m_posX, posY-m_posY)];
     }else{
         return val;
     }
-}
-
-QColor Tetromino::getTetrominoColor()
-{
-    return m_color;
 }

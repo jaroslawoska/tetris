@@ -55,8 +55,8 @@ Qt::ItemFlags TetrisModel::flags(const QModelIndex &index) const
 
 void TetrisModel::clear()
 {
-    m_screenState.fill(false);
-    m_staticState.fill(false);
+    m_screenState.fill(QColorConstants::Gray);
+    m_staticState.fill(QColorConstants::Gray);
     m_tetromino.clear();
     emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
 }
@@ -67,7 +67,7 @@ void TetrisModel::refreshCanva()
     newValues = std::move(m_staticState);
     for (std::size_t i = 0; i < m_width; ++i) {
         for (std::size_t j = 0; j < m_height; ++j) {
-            newValues[i + j * m_width] = m_tetromino.getPos(false, i, j);
+            newValues[i + j * m_width] = m_tetromino.getPos(QColorConstants::Gray, i, j);
         }
     }
     m_screenState = std::move(newValues);
