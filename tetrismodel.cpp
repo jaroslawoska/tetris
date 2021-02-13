@@ -15,7 +15,7 @@ int TetrisModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return height;
+    return m_height;
 }
 
 int TetrisModel::columnCount(const QModelIndex &parent) const
@@ -23,7 +23,7 @@ int TetrisModel::columnCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return width;
+    return m_width;
 }
 
 QVariant TetrisModel::data(const QModelIndex &index, int role) const
@@ -53,24 +53,66 @@ Qt::ItemFlags TetrisModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-void TetrisModel::nextStep()
-{
-    StateContainer newValues;
-    for (std::size_t i = 0; i < size; ++i) {
-        newValues[i] = static_cast<bool>(QRandomGenerator::global()->bounded(0,2));
-    }
-    m_screenState = std::move(newValues);
-
-    emit dataChanged(index(0, 0), index(height - 1, width - 1), {CellRole});
-}
-
 void TetrisModel::clear()
 {
     m_screenState.fill(false);
-    emit dataChanged(index(0, 0), index(height - 1, width - 1), {CellRole});
+    m_staticState.fill(false);
+    m_tetromino.clear();
+    emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
+}
+
+void TetrisModel::refreshCanva()
+{
+    StateContainer newValues;
+    newValues = std::move(m_staticState);
+    for (std::size_t i = 0; i < m_width; ++i) {
+        for (std::size_t j = 0; j < m_height; ++j) {
+            newValues[i + j * m_width] = m_tetromino.getPos(false, i, j);
+        }
+    }
+    m_screenState = std::move(newValues);
+    emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
+}
+
+bool TetrisModel::checkCollision(Tetromino &tetromino)
+{
+    if(tetromino.inside(m_width, m_height)){
+        return true;
+    }else{
+        return false;
+    }
+
+//    for (std::size_t i = 0; i < m_width; ++i) {
+//        for (std::size_t j = 0; j < m_height; ++j) {
+//            newValues[i + j * m_width] = tetromino.getPos(false, i, j);
+//        }
+//    }
+    return false;
+}
+
+void TetrisModel::nextStep()
+{
+    m_tetromino.moveDown();
+    refreshCanva();
+}
+
+void TetrisModel::keyPressed(Qt::Key & key)
+{
+    Tetromino tetromino(m_tetromino);
+    if (key == Qt::Key_Left) tetromino.moveLeft();
+    if (key == Qt::Key_Right) tetromino.moveRight();
+    if (key == Qt::Key_Down) tetromino.moveDown();
+    if (key == Qt::Key_Shift) tetromino.rotate();
+
+    if(checkCollision(tetromino)){
+
+    }else{
+        m_tetromino = tetromino;
+    }
+    refreshCanva();
 }
 
 std::size_t TetrisModel::cellIndex(const QPoint &coordinates)
 {
-    return std::size_t(coordinates.y() * width + coordinates.x());
+    return std::size_t(coordinates.y() * m_width + coordinates.x());
 }

@@ -4,7 +4,9 @@
 #include <array>
 #include <QAbstractTableModel>
 #include <QPoint>
+#include <QKeyEvent>
 #include <QtQml/qqml.h>
+#include <tetromino.h>
 
 class TetrisModel : public QAbstractTableModel
 {
@@ -36,16 +38,22 @@ public:
 
     Q_INVOKABLE void nextStep();
     Q_INVOKABLE void clear();
+    Q_INVOKABLE void keyPressed(Qt::Key & key);
 
 private:
-    static constexpr int width = 10;
-    static constexpr int height = 22;
-    static constexpr int size = width * height;
-
-    using StateContainer = std::array<bool, size>;
-    StateContainer m_screenState;
-
     static std::size_t cellIndex(const QPoint &coordinates);
+
+private:
+    static constexpr int m_width = 10;
+    static constexpr int m_height = 22;
+    static constexpr int m_size = m_width * m_height;
+
+    using StateContainer = std::array<bool, m_size>;
+    StateContainer m_screenState;
+    StateContainer m_staticState;
+    Tetromino m_tetromino;
+    void refreshCanva();
+    bool checkCollision(Tetromino &tetromin);
 };
 
 #endif // TETRISMODEL_H

@@ -34,7 +34,7 @@ ApplicationWindow {
             required property var model
             required property bool value
 
-            color: value ? "lightgrey" : "grey"
+            color: value ? "blue" : "grey"
         }
 
         model: TetrisModel {
@@ -42,9 +42,18 @@ ApplicationWindow {
         }
     }
 
+    Item {
+        anchors.fill: parent
+        focus: true
+
+        Keys.onPressed: {
+            tetrisModel.keyPressed(event.key);
+      }
+    }
+
     Timer {
         id: timer
-        interval: 500
+        interval: 1000
         running: true
         repeat: true
         onTriggered: tetrisModel.nextStep()

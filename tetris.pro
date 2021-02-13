@@ -8,7 +8,8 @@ QML_IMPORT_MAJOR_VERSION = 1
 
 SOURCES += \
     main.cpp \
-    tetrismodel.cpp
+    tetrismodel.cpp \
+    tetromino.cpp
 
 RESOURCES += \
     tetris.qml
@@ -17,7 +18,8 @@ target.path = $$[QT_INSTALL_EXAMPLES]/quick/tableview/tetris
 INSTALLS += target
 
 HEADERS += \
-    tetrismodel.h
+    tetrismodel.h \
+    tetromino.h
 
 DISTFILES += \
     tetris.qml
