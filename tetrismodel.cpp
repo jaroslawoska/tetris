@@ -67,7 +67,7 @@ void TetrisModel::refreshCanva()
     newValues = std::move(m_staticState);
     for (std::size_t i = 0; i < m_width; ++i) {
         for (std::size_t j = 0; j < m_height; ++j) {
-            newValues[i + j * m_width] = m_tetromino.getPos(QColorConstants::Gray, i, j);
+            newValues[i + j * m_width] = m_tetromino.getPos(QColorConstants::White, i, j);
         }
     }
     m_screenState = std::move(newValues);

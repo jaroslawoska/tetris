@@ -35,35 +35,35 @@ private:
 
     using TetrominoContainer = std::array<QColor, m_size>;
     TetrominoContainer m_container;
-    TetrominoContainer m_tetromino[MAX_TERMINOS] = {{QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
-                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
-                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue,
-                                                     QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Blue, QColorConstants::Blue},
+    TetrominoContainer m_tetromino[MAX_TERMINOS] = {{QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Blue, QColorConstants::Transparent,
+                                                     QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Blue, QColorConstants::Transparent,
+                                                     QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Blue, QColorConstants::Transparent,
+                                                     QColorConstants::Transparent, QColorConstants::Blue, QColorConstants::Blue, QColorConstants::Transparent},
 
-                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray},
+                                                    {QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Yellow, QColorConstants::Yellow, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent},
 
-                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Red},
+                                                    {QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Red, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Red, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Red, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Red, QColorConstants::Transparent},
 
-                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Green,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Green, QColorConstants::Green},
+                                                    {QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Green, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Green, QColorConstants::Green, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent},
 
-                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Black,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Black, QColorConstants::Black},
+                                                    {QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Black, QColorConstants::Black,
+                                                    QColorConstants::Transparent, QColorConstants::Black, QColorConstants::Black, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent},
 
-                                                    {QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Gray, QColorConstants::Cyan, QColorConstants::Gray,
-                                                    QColorConstants::Gray, QColorConstants::Cyan, QColorConstants::Cyan, QColorConstants::Cyan}};
+                                                    {QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Cyan, QColorConstants::Transparent, QColorConstants::Transparent,
+                                                    QColorConstants::Cyan, QColorConstants::Cyan, QColorConstants::Cyan, QColorConstants::Transparent,
+                                                    QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent, QColorConstants::Transparent}};
 
 
 };
