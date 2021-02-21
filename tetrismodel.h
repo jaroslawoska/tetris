@@ -53,7 +53,7 @@ private:
     StateContainer m_staticState;
     Tetromino m_tetromino;
     void refreshCanva();
-    bool checkCollision(Tetromino &tetromin);
+    bool validateMove(Tetromino &tetromin);
 };
 
 #endif // TETRISMODEL_H

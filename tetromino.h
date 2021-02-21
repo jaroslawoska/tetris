@@ -18,6 +18,8 @@ public:
     void moveDown();
     void rotate();
     QColor getPos(QColor val, int posX, int posY);
+    QColor getBrick(int posX, int posY);
+    void append(StateContainer& screen);
 
 private:
     int rotate(int px, int py);

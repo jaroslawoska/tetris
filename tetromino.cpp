@@ -93,3 +93,14 @@ QColor Tetromino::getPos(QColor val, int posX, int posY)
         return val;
     }
 }
+
+std::list<QColor> Tetromino::getBrick()
+{
+    for (int i = 0; i < m_width; ++i) {
+        for (int j = 0; j < m_height; ++j) {
+            QColor color = m_tetromino.getBrick(i,j);
+            newValues[i + j * m_width] = m_tetromino.getBrick(i,j);
+        }
+    }
+    return m_container[rotate(posX, posY)];
+}

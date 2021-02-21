@@ -61,26 +61,47 @@ void TetrisModel::clear()
     emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
 }
 
+//void TetrisModel::refreshCanva()
+//{
+//    StateContainer newValues;
+//    newValues = std::move(m_staticState);
+//    for (std::size_t i = 0; i < m_width; ++i) {
+//        for (std::size_t j = 0; j < m_height; ++j) {
+//            newValues[i + j * m_width] = m_tetromino.getPos(m_staticState[i + j * m_width], i, j);
+//        }
+//    }
+
+//    m_screenState = std::move(newValues);
+//    emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
+//}
+
 void TetrisModel::refreshCanva()
 {
     StateContainer newValues;
     newValues = std::move(m_staticState);
+
+    m_tetromino.append();
+
+
+
     for (std::size_t i = 0; i < m_width; ++i) {
         for (std::size_t j = 0; j < m_height; ++j) {
-            newValues[i + j * m_width] = m_tetromino.getPos(QColorConstants::White, i, j);
+            newValues[i + j * m_width] = m_tetromino.getPos(m_staticState[i + j * m_width], i, j);
         }
     }
+
     m_screenState = std::move(newValues);
     emit dataChanged(index(0, 0), index(m_height - 1, m_width - 1), {CellRole});
 }
 
-bool TetrisModel::checkCollision(Tetromino &tetromino)
+bool TetrisModel::validateMove(Tetromino &tetromino)
 {
-    if(tetromino.inside(m_width, m_height)){
-        return true;
-    }else{
-        return false;
-    }
+    return true;
+//    if(tetromino.inside(m_width, m_height)){
+//        return true;
+//    }else{
+//        return false;
+//    }
 
 //    for (std::size_t i = 0; i < m_width; ++i) {
 //        for (std::size_t j = 0; j < m_height; ++j) {
@@ -104,9 +125,7 @@ void TetrisModel::keyPressed(Qt::Key & key)
     if (key == Qt::Key_Down) tetromino.moveDown();
     if (key == Qt::Key_Shift) tetromino.rotate();
 
-    if(checkCollision(tetromino)){
-
-    }else{
+    if(validateMove(tetromino)){
         m_tetromino = tetromino;
     }
     refreshCanva();
